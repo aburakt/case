@@ -1,66 +1,67 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import axios, { AxiosError } from 'axios';
+import { Post } from '../types';
 
-// API base url
-const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
+const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts';
 
-// GET posts
 export const useFetchPosts = () => {
-  return useQuery({
-    queryKey: ["posts"],
+  return useQuery<Post[], AxiosError>({
+    queryKey: ['posts'],
     queryFn: async () => {
-      const response = await axios.get(POSTS_URL);
-      return response.data;
+      const res = await axios.get<Post[]>(POSTS_URL);
+      return res.data;
     },
   });
 };
 
-// POST (CREATE) post
+interface CreatePostVars {
+  title: string;
+  body?: string;
+}
 export const useCreatePost = () => {
   const queryClient = useQueryClient();
-  return useMutation(
-    async (newPost: any) => {
-      const response = await axios.post(POSTS_URL, newPost);
-      return response.data;
+  return useMutation<Post, AxiosError, CreatePostVars>({
+    mutationFn: async (newData) => {
+      const res = await axios.post<Post>(POSTS_URL, newData);
+      return res.data;
     },
-    {
-      onSuccess: () => {
-        // POST sonrası 'posts' sorgusunu invalidate edip tekrar çekiyoruz
-        queryClient.invalidateQueries({ queryKey: ["posts"] });
-      },
-    }
-  );
+    onSuccess: () => {
+      queryClient.invalidateQueries(['posts']);
+    },
+  });
 };
 
-// PUT (UPDATE) post
+interface UpdatePostVars {
+  id: number;
+  title: string;
+  body?: string;
+}
 export const useUpdatePost = () => {
   const queryClient = useQueryClient();
-  return useMutation(
-    async (updatedPost: any) => {
-      const { id, ...data } = updatedPost;
-      const response = await axios.put(`${POSTS_URL}/${id}`, data);
-      return response.data;
+  return useMutation<Post, AxiosError, UpdatePostVars>({
+    mutationFn: async (updatedData) => {
+      const { id, ...rest } = updatedData;
+      const res = await axios.put<Post>(`${POSTS_URL}/${id}`, rest);
+      return res.data;
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ["posts"] });
-      },
-    }
-  );
+    onSuccess: () => {
+      queryClient.invalidateQueries(['posts']);
+    },
+  });
 };
 
-// DELETE post
+interface DeletePostVars {
+  id: number;
+}
 export const useDeletePost = () => {
   const queryClient = useQueryClient();
-  return useMutation(
-    async (id: number) => {
+  return useMutation<null, AxiosError, DeletePostVars>({
+    mutationFn: async ({ id }) => {
       await axios.delete(`${POSTS_URL}/${id}`);
-      return id;
+      return null;
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(["posts"]);
-      },
-    }
-  );
+    onSuccess: () => {
+      queryClient.invalidateQueries(['posts']);
+    },
+  });
 };

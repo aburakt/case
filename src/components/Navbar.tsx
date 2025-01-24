@@ -1,3 +1,4 @@
+import LogoutIcon from '@mui/icons-material/Logout';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -14,13 +15,20 @@ const Navbar: React.FC = () => {
         </Typography>
         {user ? (
           <>
-            <Button color="inherit" component={Link} to="/dashboard-one">
-              Dashboard One
+            <Button color="inherit" component={Link} to="/posts">
+              Posts
             </Button>
-            <Button color="inherit" component={Link} to="/dashboard-two">
-              Dashboard Two
+            <Button color="inherit" component={Link} to="/users">
+              Users
             </Button>
-            <Button color="inherit" onClick={logout}>
+            <Button
+              color="inherit"
+              onClick={() => {
+                console.log('Logging out user:', user.username);
+                logout();
+              }}
+              startIcon={<LogoutIcon />}
+            >
               Logout
             </Button>
           </>

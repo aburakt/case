@@ -1,25 +1,32 @@
 import React, { createContext, useContext, useState } from 'react';
 
-interface AuthContextType {
-  user: string | null;
-  login: (username: string) => void;
+interface UserInfo {
+  username: string;
+  password?: string;
+}
+
+interface AuthContextProps {
+  user: UserInfo | null;
+  login: (userData: UserInfo) => void;
   logout: () => void;
 }
 
-export const AuthContext = createContext<AuthContextType>({
+const AuthContext = createContext<AuthContextProps>({
   user: null,
-  login: () => { },
-  logout: () => { },
+  login: () => {},
+  logout: () => {},
 });
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<string | null>(null);
+  const [user, setUser] = useState<UserInfo | null>(null);
 
-  const login = (username: string) => {
-    setUser(username);
+  const login = (userData: UserInfo) => {
+    console.info('Logging in with:', userData);
+    setUser(userData);
   };
 
   const logout = () => {
+    console.info('User logged out:', user);
     setUser(null);
   };
 
