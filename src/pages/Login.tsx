@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 
 const Login: React.FC = () => {
-  const { login, user } = useAuthContext();
+  const { login } = useAuthContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -13,38 +13,40 @@ const Login: React.FC = () => {
     e.preventDefault();
     login({ username, password });
     console.log('User info:', { username, password });
-    navigate('/dashboard-one');
+    navigate('/posts');
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        width: 300,
-        margin: '100px auto',
-      }}
-    >
-      <TextField
-        label="Username"
-        variant="outlined"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <TextField
-        label="Password"
-        variant="outlined"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <Button variant="contained" type="submit">
-        Login
-      </Button>
-    </Box>
+    <>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          width: 300,
+          margin: '100px auto',
+        }}
+      >
+        <TextField
+          label="Username"
+          variant="outlined"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <TextField
+          label="Password"
+          variant="outlined"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button variant="contained" type="submit">
+          Login
+        </Button>
+      </Box>
+    </>
   );
 };
 

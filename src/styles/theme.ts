@@ -12,6 +12,23 @@ export const lightTheme: DefaultTheme = {
     info: "#939394", // Manatee
     success: "#a5711f", // Mandalay
     highlight: "#f3cd6c", // Cream Can
+    cardBg: "#f5f5f5",
   },
   borderRadius: "8px", // Bileşenleri biraz daha yuvarlatmak istediğimizde
+};
+
+export const darkTheme: DefaultTheme = {
+  colors: {
+    primary: "#ffffff",
+    secondary: "#e0e0e0",
+    accent: "#fe4141",
+    background: "#141416",
+    text: "#ffffff",
+    warning: "#f5a800",
+    info: "#939394",
+    success: "#a5711f",
+    highlight: "#f3cd6c",
+    cardBg: "#1e1e20",
+  },
+  borderRadius: "8px",
 };

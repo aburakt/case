@@ -1,12 +1,12 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
-import { User } from '../types';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
+import { User } from "../types";
 
-const USERS_URL = 'https://jsonplaceholder.typicode.com/users';
+const USERS_URL = "https://jsonplaceholder.typicode.com/users";
 
 export const useFetchUsers = () => {
   return useQuery<User[], AxiosError>({
-    queryKey: ['users'],
+    queryKey: ["users"],
     queryFn: async () => {
       const res = await axios.get<User[]>(USERS_URL);
       return res.data;
@@ -27,7 +27,7 @@ export const useCreateUser = () => {
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['users']);
+      queryClient.invalidateQueries({ queryKey: ["users"] });
     },
   });
 };
@@ -47,7 +47,7 @@ export const useUpdateUser = () => {
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['users']);
+      queryClient.invalidateQueries({ queryKey: ["users"] });
     },
   });
 };
@@ -63,7 +63,7 @@ export const useDeleteUser = () => {
       return null;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['users']);
+      queryClient.invalidateQueries({ queryKey: ["users"] });
     },
   });
 };

@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios, { AxiosError } from 'axios';
 import { Post } from '../types';
 
@@ -26,7 +26,7 @@ export const useCreatePost = () => {
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['posts']);
+      queryClient.invalidateQueries({ queryKey: ['posts'] });
     },
   });
 };
@@ -45,7 +45,7 @@ export const useUpdatePost = () => {
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['posts']);
+      queryClient.invalidateQueries({ queryKey: ['posts'] });
     },
   });
 };
@@ -61,7 +61,7 @@ export const useDeletePost = () => {
       return null;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries(['posts']);
+      queryClient.invalidateQueries({ queryKey: ['posts'] });
     },
   });
 };

@@ -12,6 +12,7 @@ declare module "styled-components" {
       info: string;
       success: string;
       highlight: string;
+      cardBg: string;
     };
     borderRadius: string;
   }
