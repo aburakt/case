@@ -1,15 +1,9 @@
-import React from 'react';
-import { useDataContext } from '../context/DataContext';
-import {
-  useCreatePost,
-  useDeletePost,
-  useFetchPosts,
-  useUpdatePost,
-} from '../hooks/usePostsApi';
-import { Post } from '../types';
-
+import { DataGridComp } from '@/components/DataGridComp';
+import { Post } from '@/types';
+import { useDataContext } from '@context/DataContext';
+import { useCreatePost, useDeletePost, useFetchPosts, useUpdatePost } from '@hooks/usePostsApi';
 import { GridColDef } from '@mui/x-data-grid';
-import { DataGridComp } from '../components/DataGridComp/DataGridComp';
+import React from 'react';
 
 export const Posts: React.FC = () => {
   const { posts, setPosts } = useDataContext();

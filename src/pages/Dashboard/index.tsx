@@ -1,8 +1,8 @@
+import { DashboardCard } from '@/components/DashboardCard';
 import ArticleIcon from '@mui/icons-material/Article';
 import PeopleIcon from '@mui/icons-material/People';
 import React from 'react';
 import styled from 'styled-components';
-import { DashboardCard } from '../../components/DashboardCard/DashboardCard';
 
 const Container = styled.div`
   padding: 2rem;

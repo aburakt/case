@@ -34,9 +34,7 @@ declare module '@mui/x-data-grid' {
   interface ToolbarPropsOverrides {
     handleAddRecord?: () => void;
   }
-
 }
-
 
 function EditToolbar({ handleAddRecord }: GridSlotProps['toolbar']) {
   if (!handleAddRecord) return null;

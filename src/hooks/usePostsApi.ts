@@ -1,6 +1,6 @@
+import { DeleteIdVars, Post, UpdatePostVars } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
-import { DeleteIdVars, Post, UpdatePostVars } from "../types";
 
 const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
 

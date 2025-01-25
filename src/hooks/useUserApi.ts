@@ -1,6 +1,6 @@
+import { CreateUserVars, DeleteIdVars, UpdateUserVars, User } from "@/types";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
-import { CreateUserVars, DeleteIdVars, UpdateUserVars, User } from "../types";
 
 const USERS_URL = "https://jsonplaceholder.typicode.com/users";
 

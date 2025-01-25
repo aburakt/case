@@ -1,10 +1,10 @@
 import React from 'react';
-import { DataGridComp } from '../components/DataGridComp/DataGridComp';
-import { useDataContext } from '../context/DataContext';
-import { User } from '../types';
 
 import { GridColDef } from '@mui/x-data-grid';
-import { useCreateUser, useDeleteUser, useFetchUsers, useUpdateUser } from '../hooks/useUserApi';
+import { DataGridComp } from '../../components/DataGridComp';
+import { useDataContext } from '../../context/DataContext';
+import { useCreateUser, useDeleteUser, useFetchUsers, useUpdateUser } from '../../hooks/useUserApi';
+import { User } from '../../types';
 
 export const Users: React.FC = () => {
   const { users, setUsers } = useDataContext();

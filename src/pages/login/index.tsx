@@ -1,7 +1,7 @@
+import { useAuthContext } from '@/context/AuthContext';
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../context/AuthContext';
 import { LoginButton, LoginContainer, LoginFields } from './LoginStyles';
 
 

@@ -1,10 +1,10 @@
+import { useAuthContext } from '@/context/AuthContext';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PeopleIcon from '@mui/icons-material/People';
 import { Link, Typography } from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { useAuthContext } from '../../context/AuthContext';
 import { Logo, NavButton, StyledNavbar, StyledToolbar, ToolbarLogo, ToolbarMenu } from './NavbarStyles';
 
 const Navbar: React.FC = () => {

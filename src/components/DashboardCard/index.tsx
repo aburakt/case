@@ -1,9 +1,6 @@
+import { DashboardCardProps } from '@/types';
 import React from 'react';
-import { DashboardCardProps } from '../../types';
 import { Card, Description, IconWrapper, Title } from './DashboardCardStyles';
-
-
-
 
 export const DashboardCard: React.FC<DashboardCardProps> = ({
   to,

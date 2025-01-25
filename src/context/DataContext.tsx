@@ -1,5 +1,5 @@
+import { DataContextType, Post, User } from '@/types';
 import React, { createContext, useContext, useState } from 'react';
-import { DataContextType, Post, User } from '../types';
 
 
 const DataContext = createContext<DataContextType>({
