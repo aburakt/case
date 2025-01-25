@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
-import Login from '../pages/Login';
+import Login from '../pages/login/Login';
 import { Posts } from '../pages/Posts';
 import { Users } from '../pages/Users';
 import ProtectedRoute from './ProtectedRoutes';
