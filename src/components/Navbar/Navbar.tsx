@@ -5,7 +5,7 @@ import { Link, Typography } from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { useAuthContext } from '../../context/AuthContext';
-import { Logo, NavButton, StyledNavbar, StyledToolbar, ToolbarLogo, ToolbarMenu } from '../NavbarStyles';
+import { Logo, NavButton, StyledNavbar, StyledToolbar, ToolbarLogo, ToolbarMenu } from './NavbarStyles';
 
 const Navbar: React.FC = () => {
   const { user, logout } = useAuthContext();
@@ -18,7 +18,13 @@ const Navbar: React.FC = () => {
             <Logo src="/headerlogo.avif" alt="Logo" />
           </Link>
           <Link href="/" sx={{ textDecoration: 'none' }}>
-            <Typography variant="h6" sx={{ flexGrow: 1, color: 'white' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                flexGrow: 1,
+                color: 'white',
+                fontSize: '1.25rem',
+              }}>
               Dashboard
             </Typography>
           </Link>
@@ -55,7 +61,7 @@ const Navbar: React.FC = () => {
           )}
         </ToolbarMenu>
       </StyledToolbar>
-    </StyledNavbar>
+    </StyledNavbar >
   );
 };
 

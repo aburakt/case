@@ -3,7 +3,7 @@ import CancelIcon from '@mui/icons-material/Close';
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import EditIcon from '@mui/icons-material/Edit';
 import SaveIcon from '@mui/icons-material/Save';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import {
   GridActionsCellItem,
   GridColDef,
@@ -16,7 +16,7 @@ import {
   GridSlotProps
 } from '@mui/x-data-grid';
 import * as React from 'react';
-import { GridContainer, StyledDataGrid, Title } from './DataGridCompStyles';
+import { GridContainer, StyledDataGrid, Title, ToolBarButton } from './DataGridCompStyles';
 
 interface GridCompProps<T extends { id: number; isNew?: boolean }> {
   label: string;
@@ -43,9 +43,9 @@ function EditToolbar({ handleAddRecord }: GridSlotProps['toolbar']) {
 
   return (
     <Box sx={{ p: 1 }}>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleAddRecord}>
+      <ToolBarButton color="primary" startIcon={<AddIcon />} onClick={handleAddRecord}>
         Add record
-      </Button>
+      </ToolBarButton>
     </Box>
   );
 }

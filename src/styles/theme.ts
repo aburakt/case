@@ -14,7 +14,30 @@ export const lightTheme: DefaultTheme = {
     highlight: "#f3cd6c", // Cream Can
     cardBg: "#f5f5f5",
   },
-  borderRadius: "8px", // Bileşenleri biraz daha yuvarlatmak istediğimizde
+  borderRadius: "8px",
+  typography: {
+    fontFamily: "Montserrat, sans-serif",
+    button: {
+      fontFamily: "Montserrat, sans-serif",
+      textTransform: "none",
+    },
+  },
+  components: {
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontFamily: "Montserrat, sans-serif",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          fontFamily: "Montserrat, sans-serif",
+        },
+      },
+    },
+  },
 };
 
 export const darkTheme: DefaultTheme = {
@@ -31,4 +54,27 @@ export const darkTheme: DefaultTheme = {
     cardBg: "#1e1e20",
   },
   borderRadius: "8px",
+  typography: {
+    fontFamily: "Montserrat, sans-serif",
+    button: {
+      fontFamily: "Montserrat, sans-serif",
+      textTransform: "none",
+    },
+  },
+  components: {
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontFamily: "Montserrat, sans-serif",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          fontFamily: "Montserrat, sans-serif",
+        },
+      },
+    },
+  },
 };
