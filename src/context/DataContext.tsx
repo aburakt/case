@@ -1,13 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Post, User } from '../types';
+import { DataContextType, Post, User } from '../types';
 
-interface DataContextType {
-  posts: Post[];
-  setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
-
-  users: User[];
-  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
-}
 
 const DataContext = createContext<DataContextType>({
   posts: [],

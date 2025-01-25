@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataGridComp } from '../components/DataGridComp';
+import { DataGridComp } from '../components/DataGridComp/DataGridComp';
 import { useDataContext } from '../context/DataContext';
 import { User } from '../types';
 

@@ -1,12 +1,12 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
-import { Post } from '../types';
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import axios, { AxiosError } from "axios";
+import { DeleteIdVars, Post, UpdatePostVars } from "../types";
 
-const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts';
+const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
 
 export const useFetchPosts = () => {
   return useQuery<Post[], AxiosError>({
-    queryKey: ['posts'],
+    queryKey: ["posts"],
     queryFn: async () => {
       const res = await axios.get<Post[]>(POSTS_URL);
       return res.data;
@@ -26,16 +26,11 @@ export const useCreatePost = () => {
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts'] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
   });
 };
 
-interface UpdatePostVars {
-  id: number;
-  title: string;
-  body?: string;
-}
 export const useUpdatePost = () => {
   const queryClient = useQueryClient();
   return useMutation<Post, AxiosError, UpdatePostVars>({
@@ -45,23 +40,20 @@ export const useUpdatePost = () => {
       return res.data;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts'] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
   });
 };
 
-interface DeletePostVars {
-  id: number;
-}
 export const useDeletePost = () => {
   const queryClient = useQueryClient();
-  return useMutation<null, AxiosError, DeletePostVars>({
+  return useMutation<null, AxiosError, DeleteIdVars>({
     mutationFn: async ({ id }) => {
       await axios.delete(`${POSTS_URL}/${id}`);
       return null;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['posts'] });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
     },
   });
 };

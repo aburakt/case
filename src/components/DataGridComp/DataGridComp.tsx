@@ -1,5 +1,10 @@
+import AddIcon from '@mui/icons-material/Add';
+import CancelIcon from '@mui/icons-material/Close';
+import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import EditIcon from '@mui/icons-material/Edit';
+import SaveIcon from '@mui/icons-material/Save';
+import { Box, Button } from '@mui/material';
 import {
-  DataGrid,
   GridActionsCellItem,
   GridColDef,
   GridEventListener,
@@ -11,13 +16,7 @@ import {
   GridSlotProps
 } from '@mui/x-data-grid';
 import * as React from 'react';
-import AddIcon from '@mui/icons-material/Add';
-import CancelIcon from '@mui/icons-material/Close';
-import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import EditIcon from '@mui/icons-material/Edit';
-import SaveIcon from '@mui/icons-material/Save';
-import { Box, Button } from '@mui/material';
-import styled from 'styled-components';
+import { GridContainer, StyledDataGrid, Title } from './DataGridCompStyles';
 
 interface GridCompProps<T extends { id: number; isNew?: boolean }> {
   label: string;
@@ -38,40 +37,6 @@ declare module '@mui/x-data-grid' {
 
 }
 
-const StyledDataGrid = styled(DataGrid)`
-  && {
-    border-color: #F5A800;
-    
-    .MuiDataGrid-columnHeaders {
-      background-color: #141416;
-      color: white;
-    }
-    
-    .MuiButton-root {
-      color: #F5A800;
-      border-color: #F5A800;
-      
-      &:hover {
-        background-color: rgba(245, 168, 0, 0.1);
-      }
-    }
-  }
-`;
-
-const GridContainer = styled(Box)`
-  background: rgba(255, 255, 255, 0.9);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 2rem auto;
-  max-width: 1200px;
-`;
-
-const Title = styled.h2`
-  color: #141416;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-`;
 
 function EditToolbar({ handleAddRecord }: GridSlotProps['toolbar']) {
   if (!handleAddRecord) return null;

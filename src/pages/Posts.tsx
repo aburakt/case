@@ -9,7 +9,7 @@ import {
 import { Post } from '../types';
 
 import { GridColDef } from '@mui/x-data-grid';
-import { DataGridComp } from '../components/DataGridComp';
+import { DataGridComp } from '../components/DataGridComp/DataGridComp';
 
 export const Posts: React.FC = () => {
   const { posts, setPosts } = useDataContext();

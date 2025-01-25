@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
-import { User } from "../types";
+import { CreateUserVars, DeleteIdVars, UpdateUserVars, User } from "../types";
 
 const USERS_URL = "https://jsonplaceholder.typicode.com/users";
 
@@ -14,11 +14,6 @@ export const useFetchUsers = () => {
   });
 };
 
-interface CreateUserVars {
-  name: string;
-  username?: string;
-  email?: string;
-}
 export const useCreateUser = () => {
   const queryClient = useQueryClient();
   return useMutation<User, AxiosError, CreateUserVars>({
@@ -32,12 +27,6 @@ export const useCreateUser = () => {
   });
 };
 
-interface UpdateUserVars {
-  id: number;
-  name: string;
-  username?: string;
-  email?: string;
-}
 export const useUpdateUser = () => {
   const queryClient = useQueryClient();
   return useMutation<User, AxiosError, UpdateUserVars>({
@@ -52,12 +41,9 @@ export const useUpdateUser = () => {
   });
 };
 
-interface DeleteUserVars {
-  id: number;
-}
 export const useDeleteUser = () => {
   const queryClient = useQueryClient();
-  return useMutation<null, AxiosError, DeleteUserVars>({
+  return useMutation<null, AxiosError, DeleteIdVars>({
     mutationFn: async ({ id }) => {
       await axios.delete(`${USERS_URL}/${id}`);
       return null;
