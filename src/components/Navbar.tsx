@@ -1,44 +1,67 @@
 import LogoutIcon from '@mui/icons-material/Logout';
-import { AppBar, Button, Toolbar, Typography } from '@mui/material';
+import { Button, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { useAuthContext } from '../context/AuthContext';
+
+const StyledNavbar = styled.nav`
+  background-color: #141416;
+  margin-bottom: 2rem;
+  padding: 0.5rem 2rem;
+`;
+
+const Logo = styled.img`
+  height: 40px;
+  margin-right: 1rem;
+`;
+
+const StyledToolbar = styled(Toolbar)`
+  display: flex;
+  align-items: center;
+`;
+
+const NavButton = styled(Button)`
+  && {
+    color: white;
+    &:hover {
+      background-color: rgba(245, 168, 0, 0.1);
+    }
+  }
+`;
 
 const Navbar: React.FC = () => {
   const { user, logout } = useAuthContext();
 
   return (
-    <AppBar position="static" sx={{ marginBottom: 2 }}>
-      <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          My App
+    <StyledNavbar>
+      <StyledToolbar>
+        <Logo src="/headerlogo.avif" alt="Logo" />
+        <Typography variant="h6" sx={{ flexGrow: 1, color: 'white' }}>
+          Dashboard
         </Typography>
         {user ? (
           <>
-            <Button color="inherit" component={Link} to="/posts">
+            <NavButton component={Link} to="/posts">
               Posts
-            </Button>
-            <Button color="inherit" component={Link} to="/users">
+            </NavButton>
+            <NavButton component={Link} to="/users">
               Users
-            </Button>
-            <Button
-              color="inherit"
-              onClick={() => {
-                console.log('Logging out user:', user.username);
-                logout();
-              }}
+            </NavButton>
+            <NavButton
+              onClick={logout}
               startIcon={<LogoutIcon />}
             >
               Logout
-            </Button>
+            </NavButton>
           </>
         ) : (
-          <Button color="inherit" component={Link} to="/">
+          <NavButton component={Link} to="/">
             Login
-          </Button>
+          </NavButton>
         )}
-      </Toolbar>
-    </AppBar>
+      </StyledToolbar>
+    </StyledNavbar>
   );
 };
 
