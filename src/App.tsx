@@ -3,7 +3,6 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { AuthProvider } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
-import './index.css';
 import AppRoutes from './routes/AppRoutes';
 import GlobalStyles from './styles/globalStyles';
 import { lightTheme } from './styles/theme';
