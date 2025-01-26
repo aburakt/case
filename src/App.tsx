@@ -1,5 +1,4 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Analytics } from "@vercel/analytics/react";
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { AuthProvider } from './context/AuthContext';
@@ -16,7 +15,6 @@ const App: React.FC = () => {
       <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <DataProvider>
-            <Analytics />
             <GlobalStyles />
             <AppRoutes />
           </DataProvider>
