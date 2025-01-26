@@ -1,8 +1,8 @@
 import React from 'react';
 
+import { useDataContext } from '@/context/useDataContext';
 import { GridColDef } from '@mui/x-data-grid';
 import { DataGridComp } from '../../components/DataGridComp';
-import { useDataContext } from '../../context/DataContext';
 import { useCreateUser, useDeleteUser, useFetchUsers, useUpdateUser } from '../../hooks/useUserApi';
 import { User } from '../../types';
 

@@ -1,6 +1,6 @@
 import { DataGridComp } from '@/components/DataGridComp';
+import { useDataContext } from '@/context/useDataContext';
 import { Post } from '@/types';
-import { useDataContext } from '@context/DataContext';
 import { useCreatePost, useDeletePost, useFetchPosts, useUpdatePost } from '@hooks/usePostsApi';
 import { GridColDef } from '@mui/x-data-grid';
 import React from 'react';
