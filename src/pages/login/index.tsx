@@ -14,7 +14,7 @@ const Login: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     login({ username, password });
-    navigate('/posts');
+    navigate('/dashboard');
   };
 
   return (

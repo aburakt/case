@@ -20,7 +20,7 @@ export const Card = styled(Link)`
 
 export const IconWrapper = styled.div`
   font-size: 3rem;
-  color: ${({ theme }) => theme.colors.accent};
+  color: #f5a800;
 `;
 
 export const Title = styled.h3`

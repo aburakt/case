@@ -13,6 +13,7 @@ export default defineConfig({
       "@context": path.resolve(__dirname, "./src/context"),
       "@types": path.resolve(__dirname, "./src/types"),
       "@styles": path.resolve(__dirname, "./src/styles"),
+      "@store": path.resolve(__dirname, "./src/store")
     },
   },
 });

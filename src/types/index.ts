@@ -1,3 +1,10 @@
+export interface DataStore {
+  posts: Post[];
+  users: User[];
+  setPosts: (posts: Post[] | ((prevPosts: Post[]) => Post[])) => void;
+  setUsers: (posts: User[] | ((prevPosts: User[]) => User[])) => void;
+}
+
 export interface Post {
   userId?: number;
   id: number;
@@ -28,7 +35,6 @@ export interface AuthContextProps {
 export interface DataContextType {
   posts: Post[];
   setPosts: React.Dispatch<React.SetStateAction<Post[]>>;
-
   users: User[];
   setUsers: React.Dispatch<React.SetStateAction<User[]>>;
 }

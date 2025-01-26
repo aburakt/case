@@ -1,8 +1,9 @@
 import { useAuthContext } from '@/context/AuthContext';
+import ArticleIcon from '@mui/icons-material/Article';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PeopleIcon from '@mui/icons-material/People';
-import { Link, Typography } from '@mui/material';
+import { Link } from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Logo, NavButton, StyledNavbar, StyledToolbar, ToolbarLogo, ToolbarMenu } from './NavbarStyles';
@@ -15,18 +16,7 @@ const Navbar: React.FC = () => {
       <StyledToolbar>
         <ToolbarLogo>
           <Link href="/" sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <Logo src="/headerlogo.avif" alt="Logo" />
-          </Link>
-          <Link href="/" sx={{ textDecoration: 'none' }}>
-            <Typography
-              variant="h6"
-              sx={{
-                flexGrow: 1,
-                color: 'white',
-                fontSize: '1.25rem',
-              }}>
-              Dashboard
-            </Typography>
+            <Logo src="/src/assets/images/headerlogo.avif" alt="Logo" />
           </Link>
         </ToolbarLogo>
         <ToolbarMenu>
@@ -34,10 +24,10 @@ const Navbar: React.FC = () => {
             <>
               <NavButton
                 component={RouterLink}
-                to="/posts"
+                to="/dashboard"
                 startIcon={<DashboardIcon />}
               >
-                Posts
+                Dashboard
               </NavButton>
               <NavButton
                 component={RouterLink}
@@ -47,11 +37,18 @@ const Navbar: React.FC = () => {
                 Users
               </NavButton>
               <NavButton
+                component={RouterLink}
+                to="/posts"
+                startIcon={<ArticleIcon />}
+              >
+                Posts
+              </NavButton>
+              <NavButton
                 onClick={logout}
                 endIcon={<LogoutIcon />}
                 sx={{ marginLeft: '2rem' }}
               >
-                Logout
+                ({user?.username}) Logout
               </NavButton>
             </>
           ) : (

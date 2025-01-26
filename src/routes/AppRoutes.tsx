@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar';
+import { Dashboard } from '@/pages/Dashboard';
 import Login from '@/pages/Login';
 import { Posts } from '@/pages/Posts';
 import { Users } from '@/pages/Users';
@@ -12,6 +13,14 @@ const AppRouter: React.FC = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/posts"
           element={

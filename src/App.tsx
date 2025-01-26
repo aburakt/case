@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { AuthProvider } from './context/AuthContext';
-import { DataProvider } from './context/DataContext';
+import { DataProvider } from './context/DataProvider';
 import AppRoutes from './routes/AppRoutes';
 import GlobalStyles from './styles/globalStyles';
 import { lightTheme } from './styles/theme';
