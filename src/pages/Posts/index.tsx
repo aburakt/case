@@ -20,7 +20,6 @@ const Posts: React.FC = () => {
   });
 
   const createItem = (item: Post) => {
-    setPosts(prevPosts => [...prevPosts, item]);
     console.log('Post eklendi:', item);
   };
 

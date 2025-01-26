@@ -22,7 +22,6 @@ const Users: React.FC = () => {
   });
 
   const createItem = (item: User) => {
-    setUsers(prevUsers => [...prevUsers, item]);
     console.log('User eklendi:', item);
   };
 
