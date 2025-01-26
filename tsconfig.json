@@ -10,6 +10,33 @@
   ],
   "compilerOptions": {
     "incremental": true,
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.tsbuildinfo"
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.tsbuildinfo",
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@hooks/*": [
+        "src/hooks/*"
+      ],
+      "@context/*": [
+        "src/context/*"
+      ],
+      "@types/*": [
+        "src/types/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@store/*": [
+        "src/store/*"
+      ]
+    }
   }
 }
