@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Dashboard from '@/pages/Dashboard';
-import { Login } from '@/pages/Login';
+import Login from '@/pages/Login';
 import Posts from '@/pages/Posts';
 import Users from '@/pages/Users';
 import React from 'react';
