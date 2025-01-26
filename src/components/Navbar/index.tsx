@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
       <StyledToolbar>
         <ToolbarLogo>
           <Link sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-            <Logo src="/src/assets/images/headerlogo.avif" alt="Logo" />
+            <Logo src="headerlogo.avif" alt="Logo" />
           </Link>
         </ToolbarLogo>
         <ToolbarMenu>

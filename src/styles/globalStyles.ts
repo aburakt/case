@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: url('public/bg.avif') no-repeat center center fixed;
+    background: url('/bg.avif') no-repeat center center fixed;
     background-size: cover;
     color: ${({ theme }) => theme.colors.text};
     font-family: 'Roboto', sans-serif;
