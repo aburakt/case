@@ -4,7 +4,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import React from 'react';
 import { CardsGrid, Container, Header, Subtitle, Title } from './DashboardStyles';
 
-export const Dashboard: React.FC = () => {
+const Dashboard: React.FC = () => {
   return (
     <Container>
       <Header>
@@ -27,4 +27,6 @@ export const Dashboard: React.FC = () => {
       </CardsGrid>
     </Container>
   );
-}; 
+};
+
+export default Dashboard;

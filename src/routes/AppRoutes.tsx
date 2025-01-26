@@ -1,8 +1,8 @@
 import Navbar from '@/components/Navbar';
-import { Dashboard } from '@/pages/Dashboard';
+import Dashboard from '@/pages/Dashboard';
 import Login from '@/pages/Login';
-import { Posts } from '@/pages/Posts';
-import { Users } from '@/pages/Users';
+import Posts from '@/pages/Posts';
+import Users from '@/pages/Users';
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoutes';

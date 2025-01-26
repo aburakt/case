@@ -5,7 +5,7 @@ import { useCreatePost, useDeletePost, useFetchPosts, useUpdatePost } from '@hoo
 import { GridColDef } from '@mui/x-data-grid';
 import React from 'react';
 
-export const Posts: React.FC = () => {
+const Posts: React.FC = () => {
   const { posts, setPosts } = useDataContext();
 
   const { data: fetchedPosts } = useFetchPosts();
@@ -56,3 +56,5 @@ export const Posts: React.FC = () => {
     />
   );
 };
+
+export default Posts;

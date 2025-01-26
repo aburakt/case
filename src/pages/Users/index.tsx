@@ -6,7 +6,7 @@ import { DataGridComp } from '../../components/DataGridComp';
 import { useCreateUser, useDeleteUser, useFetchUsers, useUpdateUser } from '../../hooks/useUserApi';
 import { User } from '../../types';
 
-export const Users: React.FC = () => {
+const Users: React.FC = () => {
   const { users, setUsers } = useDataContext();
 
   const { data: fetchedUsers } = useFetchUsers();
@@ -59,3 +59,5 @@ export const Users: React.FC = () => {
     />
   );
 };
+
+export default Users;
