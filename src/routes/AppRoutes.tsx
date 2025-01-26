@@ -1,10 +1,10 @@
 import Navbar from '@/components/Navbar';
 import Dashboard from '@/pages/Dashboard';
+import Login from '@/pages/Login/index';
 import Posts from '@/pages/Posts';
 import Users from '@/pages/Users';
 import React from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import Login from '../../src/pages/Login';
 import ProtectedRoute from './ProtectedRoutes';
 
 const AppRouter: React.FC = () => {
