@@ -1,24 +1,13 @@
 import { DataGridComp } from '@/components/DataGridComp';
 import { useDataContext } from '@/context/useDataContext';
+import useDataStore from '@/store/dataStore';
 import { Post } from '@/types';
-import { useCreatePost, useDeletePost, useFetchPosts, useUpdatePost } from '@hooks/usePostsApi';
 import { GridColDef } from '@mui/x-data-grid';
 import React from 'react';
 
 const Posts: React.FC = () => {
   const { posts, setPosts } = useDataContext();
 
-  const { data: fetchedPosts } = useFetchPosts();
-  const createMutation = useCreatePost();
-  const updateMutation = useUpdatePost();
-  const deleteMutation = useDeletePost();
-
-  React.useEffect(() => {
-    if (fetchedPosts) {
-      setPosts(fetchedPosts);
-      console.log('Posts Context güncellendi:', fetchedPosts);
-    }
-  }, [fetchedPosts, setPosts]);
 
   const columns: GridColDef[] = [
     { field: 'title', headerName: 'Title', flex: 1, editable: true },
@@ -33,13 +22,27 @@ const Posts: React.FC = () => {
   });
 
   const createItem = (item: Post) => {
-    createMutation.mutate({ title: item.title, body: item.body });
+    setPosts(prevPosts => [...prevPosts, item]);
+    useDataStore.getState().setPosts(prevPosts => [...prevPosts, item]);
+    console.log('Post eklendi:', item);
   };
+
   const updateItem = (item: Post) => {
-    updateMutation.mutate({ id: item.id, title: item.title, body: item.body });
+    setPosts(prevPosts =>
+      prevPosts.map(post => post.id === item.id ? item : post)
+    );
+    useDataStore.getState().setPosts(prevPosts =>
+      prevPosts.map(post => post.id === item.id ? item : post)
+    );
+    console.log('Post güncellendi:', item);
   };
+
   const deleteItem = (id: number) => {
-    deleteMutation.mutate({ id });
+    setPosts(prevPosts => prevPosts.filter(post => post.id !== id));
+    useDataStore.getState().setPosts(prevPosts =>
+      prevPosts.filter(post => post.id !== id)
+    );
+    console.log('Post silindi:', id);
   };
 
   return (

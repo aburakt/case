@@ -1,25 +1,13 @@
 import React from 'react';
 
 import { useDataContext } from '@/context/useDataContext';
+import useDataStore from '@/store/dataStore';
 import { GridColDef } from '@mui/x-data-grid';
 import { DataGridComp } from '../../components/DataGridComp';
-import { useCreateUser, useDeleteUser, useFetchUsers, useUpdateUser } from '../../hooks/useUserApi';
 import { User } from '../../types';
 
 const Users: React.FC = () => {
   const { users, setUsers } = useDataContext();
-
-  const { data: fetchedUsers } = useFetchUsers();
-  const createMutation = useCreateUser();
-  const updateMutation = useUpdateUser();
-  const deleteMutation = useDeleteUser();
-
-  React.useEffect(() => {
-    if (fetchedUsers) {
-      setUsers(fetchedUsers);
-      console.log('Users Context güncellendi:', fetchedUsers);
-    }
-  }, [fetchedUsers, setUsers]);
 
   const columns: GridColDef[] = [
     { field: 'name', headerName: 'Name', flex: 1, editable: true },
@@ -36,13 +24,25 @@ const Users: React.FC = () => {
   });
 
   const createItem = (item: User) => {
-    createMutation.mutate({ name: item.name, username: item.username, email: item.email });
+    setUsers(prevUsers => [...prevUsers, item]);
+    useDataStore.getState().setUsers(prevUsers => [...prevUsers, item]);
+    console.log('User eklendi:', item);
   };
   const updateItem = (item: User) => {
-    updateMutation.mutate({ id: item.id, name: item.name, username: item.username, email: item.email });
+    setUsers(prevUsers =>
+      prevUsers.map(user => user.id === item.id ? item : user)
+    );
+    useDataStore.getState().setUsers(prevUsers =>
+      prevUsers.map(user => user.id === item.id ? item : user)
+    );
+    console.log('User güncellendi:', item);
   };
   const deleteItem = (id: number) => {
-    deleteMutation.mutate({ id });
+    setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
+    useDataStore.getState().setUsers(prevUsers =>
+      prevUsers.filter(user => user.id !== id)
+    );
+    console.log('User silindi:', id);
   };
 
   return (
