@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Dashboard from '@/pages/Dashboard';
-import Login from '@/pages/Login';
+import LoginPage from '@/pages/LoginPage';
 import Posts from '@/pages/Posts';
 import Users from '@/pages/Users';
 import React from 'react';
@@ -14,7 +14,7 @@ const AppRouter: React.FC = () => {
       <Routes>
         <Route
           path="/"
-          element={<Login />}
+          element={<LoginPage />}
         />
         <Route
           path="/dashboard"
