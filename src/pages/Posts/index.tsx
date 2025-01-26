@@ -1,6 +1,5 @@
 import { DataGridComp } from '@/components/DataGridComp';
 import { useDataContext } from '@/context/useDataContext';
-import useDataStore from '@/store/dataStore';
 import { Post } from '@/types';
 import { GridColDef } from '@mui/x-data-grid';
 import React from 'react';
@@ -8,14 +7,13 @@ import React from 'react';
 const Posts: React.FC = () => {
   const { posts, setPosts } = useDataContext();
 
-
   const columns: GridColDef[] = [
     { field: 'title', headerName: 'Title', flex: 1, editable: true },
     { field: 'body', headerName: 'Body', flex: 2, editable: true },
   ];
 
   const getNewRow = (): Post => ({
-    id: Math.floor(Math.random() * 1000000), // fantezi ID
+    id: Math.floor(Math.random() * 1000000),
     title: '',
     body: '',
     isNew: true,
@@ -23,7 +21,6 @@ const Posts: React.FC = () => {
 
   const createItem = (item: Post) => {
     setPosts(prevPosts => [...prevPosts, item]);
-    useDataStore.getState().setPosts(prevPosts => [...prevPosts, item]);
     console.log('Post eklendi:', item);
   };
 
@@ -31,17 +28,11 @@ const Posts: React.FC = () => {
     setPosts(prevPosts =>
       prevPosts.map(post => post.id === item.id ? item : post)
     );
-    useDataStore.getState().setPosts(prevPosts =>
-      prevPosts.map(post => post.id === item.id ? item : post)
-    );
     console.log('Post güncellendi:', item);
   };
 
   const deleteItem = (id: number) => {
     setPosts(prevPosts => prevPosts.filter(post => post.id !== id));
-    useDataStore.getState().setPosts(prevPosts =>
-      prevPosts.filter(post => post.id !== id)
-    );
     console.log('Post silindi:', id);
   };
 

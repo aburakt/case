@@ -1,10 +1,8 @@
-import React from 'react';
-
+import { DataGridComp } from '@/components/DataGridComp';
 import { useDataContext } from '@/context/useDataContext';
-import useDataStore from '@/store/dataStore';
+import { User } from '@/types';
 import { GridColDef } from '@mui/x-data-grid';
-import { DataGridComp } from '../../components/DataGridComp';
-import { User } from '../../types';
+import React from 'react';
 
 const Users: React.FC = () => {
   const { users, setUsers } = useDataContext();
@@ -25,23 +23,18 @@ const Users: React.FC = () => {
 
   const createItem = (item: User) => {
     setUsers(prevUsers => [...prevUsers, item]);
-    useDataStore.getState().setUsers(prevUsers => [...prevUsers, item]);
     console.log('User eklendi:', item);
   };
+
   const updateItem = (item: User) => {
     setUsers(prevUsers =>
       prevUsers.map(user => user.id === item.id ? item : user)
     );
-    useDataStore.getState().setUsers(prevUsers =>
-      prevUsers.map(user => user.id === item.id ? item : user)
-    );
     console.log('User güncellendi:', item);
   };
+
   const deleteItem = (id: number) => {
     setUsers(prevUsers => prevUsers.filter(user => user.id !== id));
-    useDataStore.getState().setUsers(prevUsers =>
-      prevUsers.filter(user => user.id !== id)
-    );
     console.log('User silindi:', id);
   };
 
